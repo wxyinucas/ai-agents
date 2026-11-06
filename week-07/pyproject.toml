@@ -1,0 +1,9 @@
+[project]
+name = "ai-agents-week-07"
+version = "0.1.0"
+description = "W7 debugging notebooks: reproduce, inspect, fix and verify"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "ipykernel>=6.29,<8",
+    "notebook>=7,<8",
+]
