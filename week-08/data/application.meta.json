@@ -1,0 +1,11 @@
+{
+  "batch_id": "application-001",
+  "generated_at": "2026-11-15T15:11:41.480771+00:00",
+  "python_version": "3.12.14",
+  "numpy_version": "2.5.4",
+  "source": {
+    "kind": "synthetic_fixture",
+    "dataset": "application",
+    "description": "Generated locally for the lesson; not retrieved from PostgreSQL."
+  }
+}

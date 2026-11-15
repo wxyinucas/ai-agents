@@ -1,0 +1,15 @@
+[project]
+name = "ai-agents-week-08"
+version = "0.1.0"
+description = "W8 teacher demonstration and a small analysis reference project"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "ipykernel>=6.29,<8",
+    "matplotlib>=3.10,<4",
+    "notebook>=7,<8",
+    "numpy>=2.2,<3",
+    "pytest>=8,<10",
+]
+
+[project.optional-dependencies]
+database = ["psycopg[binary]>=3.2,<4"]

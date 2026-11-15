@@ -1,0 +1,21 @@
+{
+  "batch_id": "base-001",
+  "generated_at": "2026-11-15T15:11:41.478737+00:00",
+  "config": {
+    "batch_id": "base-001",
+    "n": 100,
+    "seed": 42,
+    "slope": 2.0,
+    "intercept": 1.0,
+    "noise_std": 1.0,
+    "x_min": 0.0,
+    "x_max": 10.0
+  },
+  "python_version": "3.12.14",
+  "numpy_version": "2.5.4",
+  "source": {
+    "kind": "synthetic_fixture",
+    "dataset": "calibration",
+    "description": "Generated locally for the lesson; not retrieved from PostgreSQL."
+  }
+}

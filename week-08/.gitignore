@@ -1,0 +1,7 @@
+.generated/
+.ipynb_checkpoints/
+*-my.ipynb
+reference/data/
+reference/outputs/
+.pg_service.conf
+.pgpass
