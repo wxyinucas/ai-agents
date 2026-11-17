@@ -1,0 +1,15 @@
+[project]
+name = "ai-agents-week-09"
+version = "0.1.0"
+description = "W9 fixtures, public checks, and an offline-first teacher reference"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "matplotlib>=3.10,<4",
+    "pandas>=2.2,<4",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.pytest.ini_options]
+testpaths = ["reference/tests"]
