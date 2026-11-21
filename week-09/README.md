@@ -53,24 +53,60 @@ uv run pytest -q tests/test_market_data.py
 
 测试使用自带的合成输入和临时项目副本，检查公开的 `validate_bars(rows)` 与两个命令行入口；不会调用真实 Longbridge。实际 API 接入、授权范围、图的含义与最终清理仍按 Guide 亲自核对。
 
-## 教师参考：先跑离线链路
+## 教师演示：课前准备与打开顺序
 
-在课程仓库的 `week-09/` 中：
+课前在授课机打开课程仓库的 `week-09/reference/`。下面假设仓库位于 `~/ai-agents`；实际位置不同时，只改第一行：
 
 ```bash
+cd ~/ai-agents/week-09
 uv sync --locked
 cd reference
+code .
+```
+
+首次准备时生成下面几份合成结果。已有同名批次就保留，直接打开成品；不需要每次上课重建。
+
+```bash
 uv run --project .. --locked python fetch_batch.py --batch fixture-demo --input ../fixtures/good.json
+uv run --project .. --locked python fetch_batch.py --batch fixture-demo-2 --input ../fixtures/good.json
+uv run --project .. --locked python fetch_batch.py --batch fixture-sorted --input ../fixtures/unordered.json
 uv run --project .. --locked python analyze.py --batch fixture-demo
 uv run --project .. --locked python analyze.py --batch fixture-demo --tail 2
 ```
 
-产物位于当前 `reference/` 的 `data/fixture-demo/` 和 `outputs/fixture-demo/`，均不进入 Git。再次使用同名批次会被拒绝；重做演示时使用新的批次名，并相应修改分析命令。
+上课前把这些文件留在 VS Code 标签页中：
+
+- `outputs/fixture-demo/figure.png`、`analysis.csv`：本周最终图表。
+- `data/fixture-demo/raw.json`、`bars.csv`、`metadata.json`：原响应、整理后的表、来源记录。
+- `data/fixture-demo-2/metadata.json`：第二个批次；第一批仍在。
+- `outputs/fixture-demo/tail-2/analysis.csv`：改变展示范围后的结果。
+
+课堂按这个顺序展示：
+
+- **开发前**：先看图和 `analysis.csv`，再并排打开三份数据文件。先让学生看到要做出的东西，再发任务。
+- **单元 2**：打开两个批次的目录与来源记录；说明这两批都是同一合成输入，各为三行，不能用它们冒充平台返回 100／20 条。
+- **单元 3**：并排看 `data/fixture-sorted/raw.json` 与 `bars.csv`，看到“原响应保留乱序、表按时间排列”。再用下面命令展示缺字段被拒绝：
+
+  ```bash
+  uv run --project .. --locked python fetch_batch.py --batch rejected-missing --input ../fixtures/missing-close.json
+  echo "FETCH_EXIT=$?"
+  ```
+
+  应看到缺少 `close` 的具体错误、非 0 退出，且没有 `data/rejected-missing/bars.csv`。
+- **单元 4**：对照全量与 `tail-2/analysis.csv`；两行展示结果仍保留前一交易日的计算上下文。
+- **单元 5**：继续打开这些本地结果；平台授权是否有效，不影响已经保存的合成数据分析。授权拒绝与网页撤销仍按 Guide 的真实操作核对。
+
+固定成品只用于教师展示。学生在自己的项目中开发；课堂不必等待教师的 Agent 重新生成整套程序。需要重新演示取数时使用新批次名，并相应修改分析命令。
+
+### 核对合成结果
 
 - 全量 `analysis.csv`：收盘价 `100,110,99`，变化率依次为空、`0.10`、`-0.10`。
 - `tail-2/analysis.csv`：保留 `110/0.10`、`99/-0.10`；先在全量数据上计算，再截取两行。
 - `figure.png`：上图收盘价，下图百分比变化，共用 UTC 日期轴。
 - `source=fixture` 的元数据记录输入文件与本地处理时间，不填写虚构请求或 API 获取时间。
+- `data/`、`outputs/` 均已忽略，不进入 Git；授课机同步仓库后须在本机生成上述成品。
+
+### 本人授权后的线上入口
 
 线上入口只在本人完成本周 Basic data 授权后使用：
 
