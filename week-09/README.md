@@ -30,13 +30,13 @@ week-09/
 
 先在已经 clone 的课程仓库中取得教师更新。remote 的名称沿用自己的设置；已有修改先查看 `git status`，遇到 merge 问题可让 Agent 解释和协助，不删除自己的提交。
 
-下面假设课程仓库仍位于 `~/course/w02-workbench`，自己的 W9 项目已按 Guide 初始化。若实际路径不同，只替换材料来源：
+下面假设课程仓库位于 `~/course/ai-agents`，自己的 W9 项目已按 Guide 初始化。已有 `~/course/w02-workbench` 时保留原目录，只替换材料来源的路径前缀；不重新 clone：
 
 ```bash
 cd ~/course/w09-market-data
 mkdir -p fixtures tests
-cp ~/course/w02-workbench/week-09/fixtures/*.json fixtures/
-cp ~/course/w02-workbench/week-09/checks/test_market_data.py tests/
+cp ~/course/ai-agents/week-09/fixtures/*.json fixtures/
+cp ~/course/ai-agents/week-09/checks/test_market_data.py tests/
 ```
 
 完成 `checks.py` 和 `fetch_batch.py` 后，单元 3 只运行这一组；此时不要求已有 `analyze.py`：
@@ -55,10 +55,10 @@ uv run pytest -q tests/test_market_data.py
 
 ## 教师演示：课前准备与打开顺序
 
-课前在授课机打开课程仓库的 `week-09/reference/`。下面假设仓库位于 `~/ai-agents`；实际位置不同时，只改第一行：
+课前在授课机打开课程仓库的 `week-09/reference/`。下面统一使用 `~/course/ai-agents`；授课机已有 `~/ai-agents` 或 `~/course/w02-workbench` 时，只改第一行，沿用现有仓库：
 
 ```bash
-cd ~/ai-agents/week-09
+cd ~/course/ai-agents/week-09
 uv sync --locked
 cd reference
 code .

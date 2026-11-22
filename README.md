@@ -1,84 +1,38 @@
-# AI Agents｜课程工作台与每周练习
+# AI Agents｜课程代码与每周练习
 
-本仓库是 AI Agents 课程的学生工作台：
+本仓库统一保存本课程的代码、Notebook、样例、测试与教师参考。台本、Slides 和学生 Guide 由 [teaching-hub](https://github.com/wxyinucas/teaching-hub) 按学期维护；每周具体要求以课程网站为准。
 
-- W2 的 Course Check 在仓库根目录，操作说明见下文。
-- W3 的蒲丰投针实验与报告材料在 [`week-03/`](week-03/)，使用说明见 [`README-materials.md`](week-03/README-materials.md)。
-- 可直接运行的 W3 教师演示在 [`demos/week-03-buffon/`](demos/week-03-buffon/)，供课堂展示和本地复现，不替代学生工作目录。
-- W4 的配置隔离练习在 [`week-04/`](week-04/)，含函数壳、故障对照、公开验收与 Notebook，使用说明见 [`README-materials.md`](week-04/README-materials.md)。
-- W5 的数据操作与遍历材料在 [`week-05/`](week-05/)，含完整 Notebook、分段练习、三道函数任务、公开测试与 CI；使用说明见 [`README-materials.md`](week-05/README-materials.md)。
-- W6 的函数与可见性纠错练习在 [`week-06/`](week-06/)，六个场景均含错误 Playground、函数壳、单元检查与折叠参考；使用说明见 [`README.md`](week-06/README.md)。
-- W7 的 NumPy 数值计算调试材料在 [`week-07/`](week-07/)，含教师演示和六道数组练习；使用说明见 [`README.md`](week-07/README.md)。
-- W8 的项目维护、R／MATLAB 工作台与 PostgreSQL 演示材料在 [`week-08/`](week-08/)。Notebook 用于教师展示，学生在自己的 VS Code 项目中与 Agent 开发；使用说明见 [`README.md`](week-08/README.md)。
+## 从哪里开始
 
-W3 沿用 W2 已经 clone 的仓库和已有 Git 历史，但在 `week-03/` 建立独立的 uv 项目。W2 根目录的代码、依赖与环境不构成 W3 的代码基线；W3 的实现、锁文件与 `.venv/` 都属于 `week-03/`。
-
-## W2｜Course Check
-
-这是 AI Agents 课程第二周的一次性工作台，不构成后续项目的代码基线。仓库根目录同时也是 uv 项目根目录；三节课始终在这里观察：
-
-1. 命令在哪个目录执行；
-2. 程序使用哪个项目环境；
-3. 一项修改怎样出现在 Git diff 中，并被保存为本地 commit。
-
-完整步骤以课程网站的 W2 Guide 为准。
-
-## 恢复并运行项目
-
-在仓库根目录执行：
+新取得仓库时，建议使用整门课的名称：
 
 ```bash
-uv sync --locked
-COURSE_MODE=fixture uv run --locked python course_check.py
-COURSE_MODE=fixture uv run --locked pytest -q
+git clone https://github.com/wxyinucas/ai-agents.git ~/course/ai-agents
+cd ~/course/ai-agents
 ```
 
-初始输出中的签名是：
+已经使用 `~/course/w02-workbench` 的同学继续使用原目录与 Git 历史。它只是 W2 首次 clone 时的本地名称，包含整门课；更新时按 [目录迁移说明](MIGRATION.md) 保留自己的改动。无需再次 clone 或修改目录名。
 
-```text
-signature: teacher
-```
+进入当周目录后，再恢复该目录自己的环境并执行命令。仓库根目录只承担导航；W2 的程序和 uv 配置现已归入 `week-02/`。
 
-程序报告当前事实，测试只检查已经写下的规则；测试通过不等于全部课堂任务已经完成。
+| 入口 | 内容与操作说明 |
+| --- | --- |
+| [week-02/](week-02/) | 命令行、项目环境与本地 Git；[Course Check](week-02/README.md) |
+| [week-03/](week-03/) | Agent、蒲丰投针实验与 LaTeX 报告；[使用说明](week-03/README-materials.md) |
+| [week-04/](week-04/) | 配置隔离、Notebook、故障对照与公开测试；[使用说明](week-04/README-materials.md) |
+| [week-05/](week-05/) | 容器操作、遍历、函数任务与 CI；[使用说明](week-05/README-materials.md) |
+| [week-06/](week-06/) | 函数、调用与可见性的六个纠错场景；[使用说明](week-06/README.md) |
+| [week-07/](week-07/) | NumPy 数值计算调试、教师演示与练习；[使用说明](week-07/README.md) |
+| [week-08/](week-08/) | 项目维护、R／MATLAB 工作台与 PostgreSQL 演示；[使用说明](week-08/README.md) |
+| [week-09/](week-09/) | Longbridge 数据批次、校验、离线分析与教师成品；[使用说明](week-09/README.md) |
+| [demos/](demos/) | 可独立运行的教师展示，例如 [W3 动态投针演示](demos/week-03-buffon/README.md) |
+| [project/](project/) | 后续持续演化的项目；启用方式随相应周次明确 |
+| [legacy/market-lab/](legacy/market-lab/) | 从旧项目仓库整理的历史行情实验与参考素材，供按需选用 |
 
-## 留下公开签名
+## 周材料与持续项目
 
-第三课时在 VS Code 中把 [`signature.toml`](signature.toml) 的教师默认值改为教师分配的公开课程代号：
+- `week-XX/` 保存当周任务、练习、样例、测试与参考；需要 Python 环境的周次使用各自的 `pyproject.toml`、`uv.lock` 和 `.venv/`。
+- `project/` 承载后续持续维护的一份项目代码；具体开始时间与结构由当周任务确定。
+- `legacy/` 的旧周号不等于当前课程周号。历史材料不构成补做要求，也不自动成为持续项目的基线。
 
-```toml
-[student]
-signature = "s07"
-```
-
-不要写姓名、完整学号、密码、token 或其他个人信息。
-
-随后在仓库根目录核对：
-
-```bash
-git status --short
-git diff -- signature.toml
-```
-
-确认 diff 只有签名变化后，只暂存这一文件并形成一条本地提交：
-
-```bash
-git add signature.toml
-git commit -m "w2: set public signature"
-```
-
-本周不执行 `git push`。commit 只保存本地历史，不会自动改变 GitHub 上的 remote。
-
-## W3｜Agent 与实验报告
-
-沿用已有的 `~/course/w02-workbench`。在该仓库中通过 Git 取得教师发布的材料，然后直接进入本周目录：
-
-```bash
-cd ~/course/w02-workbench
-git pull --no-rebase origin main
-cd week-03
-code .
-```
-
-让 Agent 阅读本目录的 `README-materials.md`、`EXPERIMENT.txt`、测试与模板，在 `week-03/` 中生成独立的 `pyproject.toml`、`uv.lock` 和两个 Python 入口，再运行实验、公开测试与报告重建。
-
-本周的 Git 提交仍属于原有仓库；不需要第二次 clone、跨目录复制材料或在 `week-03/` 中初始化新仓库。完成后按 W3 Guide 将实验报告保存到自己的 remote；本次不要求 fork 教师仓库、建立 `students/sXX/system/` 或提交 PR。配置个人 remote 后，教师材料的更新从保留的 `upstream` 获取，具体操作以 Guide 为准。
+学生继续保留当前仓库与个人提交。教师材料的 remote 可能叫 `origin` 或 `upstream`，更新前用 `git remote -v` 确认；不按周重复 clone，也不在周目录中另行 `git init`。

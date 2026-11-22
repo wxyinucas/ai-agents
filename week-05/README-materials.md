@@ -1,5 +1,6 @@
 # W5｜数据操作与遍历
 
+路径示例统一使用 `~/course/ai-agents`；已有 `~/course/w02-workbench` 时保留原目录，只替换路径前缀。
 本周使用已经 clone 的 `ai-agents` 仓库，在 `week-05/` 建立独立环境；不改 W2～W4 的代码、依赖和报告，不进入另一个课程仓库。
 
 ## 取得材料
@@ -7,7 +8,7 @@
 在 VS Code 的 Terminal 中查看已有 remote：
 
 ```bash
-cd ~/course/w02-workbench
+cd ~/course/ai-agents
 git remote -v
 git status -sb
 ```
@@ -22,7 +23,7 @@ git status -sb
 ## 打开本周环境与 Notebook
 
 ```bash
-cd ~/course/w02-workbench/week-05
+cd ~/course/ai-agents/week-05
 uv sync --locked
 code .
 ```
@@ -102,7 +103,7 @@ git diff -- operations.py tests/test_student.py
 CI 是 GitHub 在远端运行同一套测试。先在仓库根目录确认 `origin` 是自己的仓库，不是教师的 `wxyinucas/ai-agents`。个人 remote 尚未配置时，先按 W3 Guide 完成接续；当前仍可做全部本地练习，不另建一个 W5 仓库。
 
 ```bash
-cd ~/course/w02-workbench
+cd ~/course/ai-agents
 git remote -v
 git status -sb
 git add -- week-05/operations.py week-05/tests/test_student.py

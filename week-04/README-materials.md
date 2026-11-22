@@ -1,5 +1,6 @@
 # W4｜追加实验与配置隔离
 
+路径示例统一使用 `~/course/ai-agents`；已有 `~/course/w02-workbench` 时保留原目录，只替换路径前缀。
 导师需要保留昨天的投针方案，再生成可独立调整的新方案。本周与 Agent 先写有依据的测试、拒绝共享错误，再实现 `make_variant` 和核验。完整规格见 [EXPERIMENT.txt](EXPERIMENT.txt)，操作步骤见课程网站的 W4 Guide。
 
 本目录是已有 `ai-agents` 仓库中的独立 uv 项目，不需要第二次 clone、`uv init` 或 `git init`，不改 W2/W3 环境与报告。
@@ -9,7 +10,7 @@
 更新教师材料后，在学生已有仓库执行：
 
 ```bash
-cd ~/course/w02-workbench/week-04
+cd ~/course/ai-agents/week-04
 uv sync --locked
 code .
 ```

@@ -8,11 +8,11 @@
 已经按 W2 clone 本仓库的同学，先按 W3 Guide 更新仓库，再进入演示目录；不需要另外 clone。
 
 ```bash
-cd ~/course/w02-workbench/demos/week-03-buffon
+cd ~/course/ai-agents/demos/week-03-buffon
 uv sync --locked
 ```
 
-需要已经安装 uv；项目使用 Python 3.12，`uv sync` 会按 `.python-version` 与 `uv.lock` 准备本目录的 `.venv/`。不使用 W2 根目录或学生 `week-03/` 的环境。
+需要已经安装 uv；项目使用 Python 3.12，`uv sync` 会按 `.python-version` 与 `uv.lock` 准备本目录的 `.venv/`。本演示与 `week-02/`、学生 `week-03/` 的环境独立。课程仓库仍放在旧的 `~/course/w02-workbench` 时，只替换上面路径前缀，不重新 clone。
 
 ### 只跑 Python 实验和图表
 

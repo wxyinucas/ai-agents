@@ -1,10 +1,10 @@
 # W3 学生材料｜独立实验与报告
 
 这是一个“让 Agent 实现实验、用证据检查结果”的小项目，不是教师参考答案。
-材料源文件由 `ai-agents/week-03/` 统一维护。沿用 W2 已经 clone 的 `~/course/w02-workbench` 仓库，通过 Git 获取材料，直接在本周目录实现：
+材料源文件由 `ai-agents/week-03/` 统一维护。沿用已经 clone 的课程仓库，通过 Git 获取材料，直接在本周目录实现。下面示例使用 `~/course/ai-agents`；已有 `~/course/w02-workbench` 时保留原目录，只替换路径前缀：
 
 ```bash
-cd ~/course/w02-workbench
+cd ~/course/ai-agents
 git pull --no-rebase origin main
 cd week-03
 code .
@@ -12,7 +12,7 @@ code .
 
 在 VS Code 中让 Agent 先阅读 `EXPERIMENT.txt`、公开测试、`rebuild.sh` 和 `report.tex`。
 仓库与已有 Git 历史继续使用；无需第二次 clone、跨目录复制或在 `week-03/` 中执行 `git init`。
-W2 的根目录代码不是 W3 的代码基线。本目录必须有自己的 `pyproject.toml`、`uv.lock` 和 `.venv/`，不修改根项目的依赖配置，也不使用根目录的环境运行 W3。
+W2 的代码与环境已归位到 `week-02/`，不是 W3 的代码基线。本目录建立自己的 `pyproject.toml`、`uv.lock` 和 `.venv/`；仓库根目录只负责导航。
 以后教师更新材料时，仍通过 Git 合入更新；按 Guide 配置个人 remote 后，教师仓库保留为 `upstream`，更新从该 remote 获取。
 
 ## 材料与职责
@@ -23,8 +23,8 @@ W2 的根目录代码不是 W3 的代码基线。本目录必须有自己的 `py
 - `tests/`：公开测试。不要修改测试来获得通过；检查失败原因并改实现。
 
 Agent 需要在 `week-03/` 中生成独立的 `pyproject.toml`、`uv.lock`、`experiment.py` 和 `render_results.py`。
-本周 uv 项目使用 Python 3.12（`requires-python = ">=3.12,<3.13"`），声明自己的 matplotlib 和 pytest 依赖，不加入 W2 根项目的 workspace。
-若使用 `uv init`，在本目录执行 `uv init --bare --python 3.12 --no-workspace --vcs none`；`--no-workspace` 防止它把本周目录加入根项目并修改 W2 的 `pyproject.toml`。
+本周 uv 项目使用 Python 3.12（`requires-python = ">=3.12,<3.13"`），声明自己的 matplotlib 和 pytest 依赖，与 `week-02/` 的项目环境独立。
+若使用 `uv init`，在本目录执行 `uv init --bare --python 3.12 --no-workspace --vcs none`；这里明确建立独立项目，并沿用课程仓库已有的 Git 历史。
 在本周 `pyproject.toml` 中声明以下测试配置，使 pytest 只读取本周配置和 `tests/`：
 
 ```toml
@@ -64,8 +64,8 @@ uv run --locked pytest -q
 bash rebuild.sh
 ```
 
-上面的命令都在 `week-03/` 中运行；先确认本目录已有独立的 `pyproject.toml`，再执行 `uv sync` 生成本周的锁文件与环境。尚未建立本周项目时，不先运行 `uv run`，以免它向上找到 W2 根项目。
-W2 根目录的测试与这份报告实验互不替代，本周只运行 `week-03/tests/`。
+上面的命令都在 `week-03/` 中运行；先确认本目录已有独立的 `pyproject.toml`，再执行 `uv sync` 生成本周的锁文件与环境。
+`week-02/tests/` 与这份报告实验互不替代，本周只运行 `week-03/tests/`。
 公开测试检查：固定针位的相交判断、手算的估计值、部分非法输入、同环境同参数同种子的可复现性，以及 CSV 与 `simulate` 返回值、估计公式是否一致。
 这些测试尚未证明取样均匀、彼此独立，或 seed 没在循环内重设；它们也不验收图表与 PDF。
 图像和 PDF 的内容仍由你打开检查；“存在文件”不代表内容正确。
